@@ -5,34 +5,34 @@ import java.util.stream.Collectors;
 
 public class Lotto {
 	public static final Integer PRICE = 1000;
-	private final List<LottoNo> lotto;
+	private final List<LottoNumber> lottoNumbers;
 
-	public Lotto(List<Integer> lottoNos) {
-		validate(lottoNos);
-		this.lotto = lottoNos.stream()
-				.map(number -> new LottoNo(number))
+	public Lotto(List<Integer> lottoNumbers) {
+		validate(lottoNumbers);
+		this.lottoNumbers = lottoNumbers.stream()
+				.map(LottoNumber::new)
 				.collect(Collectors.toList());
 	}
 
-	private void validate(List<Integer> lottoNos) {
-		if (lottoNos.size() != 6) {
+	private void validate(List<Integer> lottoNumbers) {
+		if (lottoNumbers.size() != 6) {
 			throw new IllegalArgumentException("로또는 6개의 숫자로 이루어져야 합니다.");
 		}
 	}
 
 	public Ranking ranking(WinningLotto winningLotto) {
-		int matchingCount = (int) lotto.stream().filter(lottoNo -> winningLotto.lotto().contains(lottoNo)).count();
+		int matchingCount = (int) lottoNumbers.stream().filter(winningLotto::contains).count();
 		boolean hasBonusNumber = contains(winningLotto.bonusNumber());
 
 		return Ranking.of(matchingCount, hasBonusNumber);
 	}
 
-	private boolean contains(LottoNo lottoNo) {
-		return lotto.contains(lottoNo);
+	public boolean contains(LottoNumber lottoNumber) {
+		return lottoNumbers.contains(lottoNumber);
 	}
 
 	@Override
 	public String toString() {
-		return lotto + "";
+		return lottoNumbers + "";
 	}
 }

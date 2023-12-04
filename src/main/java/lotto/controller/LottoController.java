@@ -18,7 +18,8 @@ public class LottoController {
 	public void run() {
 		int amount = inputView.purchase();
 		List<Lotto> manualLottos = inputView.manualLottos();
-		Lottos lottos = new Lottos(manualLottos, new LottoGenerator(amount - manualLottos.size(), new RandomLottoNumbers()).generate());
+        List<Lotto> autoLottos = new LottoGenerator(amount - manualLottos.size(), new RandomNumbers()).generate();
+		Lottos lottos = new Lottos(manualLottos, autoLottos);
 
 		resultView.generatedLottoGuide(manualLottos.size(), amount - manualLottos.size());
 		resultView.showLottos(lottos);

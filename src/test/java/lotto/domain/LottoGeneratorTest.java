@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LottoGeneratorTest {
     @Test
     void 생성() {
-        LottoGenerator lottoGenerator = new LottoGenerator(14, new RandomLottoNumbers());
+        LottoGenerator lottoGenerator = new LottoGenerator(14, new RandomNumbers());
         assertThat(lottoGenerator.generate()).hasSize(14);
     }
 }

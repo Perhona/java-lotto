@@ -6,16 +6,16 @@ import java.util.stream.Stream;
 
 public class LottoGenerator {
 	private final int amount;
-	private final LottoNumbers lottoNumbers;
+	private final Numbers lottoNumbers;
 
-	public LottoGenerator(int amount, LottoNumbers lottoNumbers) {
+	public LottoGenerator(int amount, Numbers lottoNumbers) {
 		this.amount = amount;
 		this.lottoNumbers = lottoNumbers;
 	}
 
 	public List<Lotto> generate() {
 		return Stream
-				.generate(() -> new Lotto(lottoNumbers.lottoNumbers()))
+				.generate(() -> new Lotto(lottoNumbers.numbers()))
 				.limit(amount)
 				.collect(Collectors.toList());
 	}

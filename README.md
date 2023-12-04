@@ -133,3 +133,9 @@
 #### 프로그래밍 요구사항
 * [x] 사용자가 잘못된 값을 입력했을 때 java exception으로 예외 처리를 한다.
 * [x] java8에 추가된 Optional 을 적용해 NullPointerException이 발생하지 않도록 한다.
+
+#### Feedback 23.12.03
+* [x] 파라미터의 의미를 명시적으로 드러내주기 위해 변수로 추출
+* [x] 클래스명이나 변수명에 줄임말을 쓰지 않고, 컬렉션은 복수로 표현
+* [x] number -> new LottoNo(number) 에서 생성자 레퍼런스 활용
+* [x] Lotto ranking 메서드 내 당첨 로또와 비교하는 부분에서 WinningLotto에게 contains를 직접 질의하기

@@ -44,4 +44,12 @@ class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
         assertThat(lotto.ranking(winningLotto)).isEqualTo(Ranking.SECOND);
     }
+
+    @Test
+    @DisplayName("contains_LottoNumber_boolean")
+    void contains() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.contains(new LottoNumber(1))).isTrue();
+        assertThat(lotto.contains(new LottoNumber(7))).isFalse();
+    }
 }
